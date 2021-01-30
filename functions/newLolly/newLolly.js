@@ -93,14 +93,14 @@ const resolvers = {
         })
       )
 
-    //   axios
-    //     .post("https://api.netlify.com/build_hooks/5f9b08201c44a833a923d4b4")
-    //     .then(function (response) {
-    //       console.log(response)
-    //     })
-    //     .catch(function (error) {
-    //       console.error(error)
-    //     })
+      axios
+        .post("https://api.netlify.com/build_hooks/60150d7d970bcfbbcc4a27f2")
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.error(error)
+        })
 
     
       return result.data
