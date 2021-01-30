@@ -35,15 +35,15 @@ export default function DynamicLollyPage({ data }) {
       <div className="recievedContentContainer">
         <Lolly
           style="lollyRecieved"
-          lollyTop={data.LOLLIES.getLollyByPath.flavorTop}
-          lollyMid={data.LOLLIES.getLollyByPath.flavorMid}
-          lollyBot={data.LOLLIES.getLollyByPath.flavorBot}
+          // lollyTop={data.LOLLIES.getLollyByPath.flavorTop}
+          // lollyMid={data.LOLLIES.getLollyByPath.flavorMid}
+          // lollyBot={data.LOLLIES.getLollyByPath.flavorBot}
         />
 
         <div className="recievedTextContainer">
-          <h3>HI {data.LOLLIES.getLollyByPath.recipientName.toUpperCase()}</h3>
+          {/* <h3>HI {data.LOLLIES.getLollyByPath.recipientName.toUpperCase()}</h3>
           <p>{data.LOLLIES.getLollyByPath.message}</p>
-          <h4>From: {data.LOLLIES.getLollyByPath.sendersName}</h4>
+          <h4>From: {data.LOLLIES.getLollyByPath.sendersName}</h4> */}
         </div>
       </div>
     </div>
