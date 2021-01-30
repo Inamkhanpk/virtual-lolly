@@ -40,6 +40,9 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     getAllLollies: async () => {
+      var client = new faunadb.Client({
+        secret: "fnAEArQaEeACAa4ESXhEPyt274h1pwKAbO50cL0F",
+      })
       var result = await client.query(
         q.Map(
           //q.Paginate(q.Match(q.Index("allLollies"))),
