@@ -30,7 +30,7 @@ export default function DynamicLollyPage({ data }) {
       <h5 className="sharableLinkContainer">Your sharable link: </h5>{" "}
       <span className="sharableLink">
         {" "}
-        {`https://sharelolly.netlify.app/lollies/${data.LOLLIES.getLollyByPath.lollyPath}`}
+        {`https://virtual-inam.netlify.app/lollies/${data.LOLLIES.getLollyByPath.lollyPath}`}
       </span>
       <div className="recievedContentContainer">
         <Lolly
