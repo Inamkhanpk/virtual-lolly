@@ -11,7 +11,7 @@ var client = new faunadb.Client({
 
 const typeDefs = gql`
   type Query {
-    hello: String
+    
     getAllLollies: [Lolly]!
     getLollyByPath(lollyPath: String!): Lolly
   }
@@ -64,26 +64,22 @@ const resolvers = {
       })
     },
 
-    // getLollyByPath: async (_, args) => {
-    //   try {
-    //     var result = await client.query(
-    //       q.Get(q.Match(q.Index("Lolly_by_path"), args.lollyPath))
-    //     )
-    //     console.log(result)
+    getLollyByPath: async (_, args) => {
+      try {
+        var result = await client.query(
+          q.Get(q.Match(q.Index("Lolly_by_path"), args.lollyPath))
+        )
+        console.log(result)
 
-    //     return result.data
-    //   } catch (e) {
-    //     return e.toString()
-    //   }
-    // },
+        return result.data
+      } catch (e) {
+        return e.toString()
+      }
+    },
   },
 
 
-  // Query: {
-  //   hello: () => {
-  //     return 'Hello, Lolly!'
-  //   },
-  // },
+  
 
   Mutation: {
     createLolly: async (root, args) => {
