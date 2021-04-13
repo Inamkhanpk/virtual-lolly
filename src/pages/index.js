@@ -2,15 +2,37 @@ import React from "react"
 import Lolly from "../components/lolly"
 import Header from "../components/header"
 import { navigate } from "gatsby"
+import Grid from "@material-ui/core/Grid"
+import { makeStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button"
+const useStyles = makeStyles((theme) => ({
+  header:{
+    textAlign:'center'
+  },
+  lolliesContainer:{
+    display:'flex',
+    justifyContent:'center'
+  },
+  createLollyButton:{
+    textAlign:'center'
+  }
+}));
+
 
 export default function Home() {
+  const classes = useStyles();
   return (
-    <div>
+    <Grid container>
+
+      <Grid item xs={12}  className={classes.header}>
       <Header
-        mainHeadingText="Kuch Meetha Hojaye?"
-        secondaryHeadingText="Aoo Khushiyaan Baantain..."
-      />
-      <div className="lolliesContainer">
+        mainHeadingText="Virtual Lollypop"
+        secondaryHeadingText="because we all someone who deserves some sugar"
+        />
+      </Grid >
+
+
+      <Grid className={classes.lolliesContainer} item xs={12}>
         <Lolly style="lollipop" />
         <Lolly
           style="lollipop"
@@ -30,16 +52,19 @@ export default function Home() {
           lollyBot="#00a97e"
           lollyMid="#ec398f"
         />
-      </div>
+      </Grid>
 
-      <button
-        className="createLollyButton"
+      <Grid item xs={12}  className={classes.createLollyButton}>
+       <Button
+        
         onClick={() => {
           navigate("/createNew")
         }}
       >
-        Send a customized lolly to a friend
-      </button>
-    </div>
+        Make a new lollipop to send to a friend
+      </Button>
+      </Grid>
+
+    </Grid>
   )
 }

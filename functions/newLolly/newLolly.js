@@ -3,7 +3,7 @@ const { ApolloServer, gql } = require("apollo-server-lambda")
 const faunadb = require("faunadb")
 const axios = require("axios")
 
-    q = faunadb.query;
+  const  q = faunadb.query;
 
 var client = new faunadb.Client({
   secret: "fnAEArQaEeACAa4ESXhEPyt274h1pwKAbO50cL0F",
@@ -45,8 +45,8 @@ const resolvers = {
       })
       var result = await client.query(
         q.Map(
-          //q.Paginate(q.Match(q.Index("allLollies"))),
-          q.Paginate(q.Documents(q.Collection("Lollies"))),
+          q.Paginate(q.Match(q.Index("allLollies"))),
+          //q.Paginate(q.Documents(q.Collection("Lollies"))),
           q.Lambda(x => q.Get(x))
         )
       )
@@ -92,7 +92,7 @@ const resolvers = {
       axios
         .post("https://api.netlify.com/build_hooks/60150d7d970bcfbbcc4a27f2")
         .then(function (response) {
-          console.log(response)
+          //console.log(response)
         })
         .catch(function (error) {
           console.error(error)

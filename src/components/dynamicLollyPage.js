@@ -1,3 +1,4 @@
+
 import React from "react"
 import Lolly from "./lolly"
 import { graphql } from "gatsby"
@@ -19,8 +20,8 @@ export const query = graphql`
   }
 `
 
-export default function DynamicLollyPage({ pageContext }) {
-  console.log(pageContext)
+export default function DynamicLollyPage({ data }) {
+
   return (
     <div>
       <Header
@@ -30,20 +31,20 @@ export default function DynamicLollyPage({ pageContext }) {
       <h5 className="sharableLinkContainer">Your sharable link: </h5>{" "}
       <span className="sharableLink">
         {" "}
-        {/* {`https://virtual-inam.netlify.app/lollies/${data.LOLLIES.getLollyByPath.lollyPath}`} */}
+        {`https://sharelolly.netlify.app/lollies/${data.LOLLIES.getLollyByPath.lollyPath}`}
       </span>
       <div className="recievedContentContainer">
         <Lolly
           style="lollyRecieved"
-          // lollyTop={data.LOLLIES.getLollyByPath.flavorTop}
-          // lollyMid={data.LOLLIES.getLollyByPath.flavorMid}
-          // lollyBot={data.LOLLIES.getLollyByPath.flavorBot}
+          lollyTop={data.LOLLIES.getLollyByPath.flavorTop}
+          lollyMid={data.LOLLIES.getLollyByPath.flavorMid}
+          lollyBot={data.LOLLIES.getLollyByPath.flavorBot}
         />
 
         <div className="recievedTextContainer">
-          {/* <h3>HI {data.LOLLIES.getLollyByPath.recipientName.toUpperCase()}</h3>
+          <h3>HI {data.LOLLIES.getLollyByPath.recipientName.toUpperCase()}</h3>
           <p>{data.LOLLIES.getLollyByPath.message}</p>
-          <h4>From: {data.LOLLIES.getLollyByPath.sendersName}</h4> */}
+          <h4>From: {data.LOLLIES.getLollyByPath.sendersName}</h4>
         </div>
       </div>
     </div>

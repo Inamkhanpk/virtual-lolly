@@ -1,3 +1,5 @@
+
+
 const path = require(`path`)
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -22,5 +24,3 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   })
 }
-
-

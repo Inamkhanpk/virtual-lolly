@@ -6,9 +6,34 @@ import { useQuery, useMutation, gql } from "@apollo/client"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import shortid from "shortid"
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles((theme) => ({
+  header:{
+    textAlign:'center'
+  },
+  editorRoot:{
+    display:'flex',
+    justifyContent:'center'
+  },
+  colorSelectorContainer:{
+    display:'flex',
+    flexDirection:'column',
+    margin:theme.spacing(2)
+  },
+  colorPickerLabel:{
+    margin:theme.spacing(4),
+    borderRadius:'50%',
+    
+    width: '25px'
+  },
+  formlabel:{
+    margin:theme.spacing(2)
+  }
 
 
-
+}));
 
 
 const createLollyMutation = gql`
@@ -37,6 +62,7 @@ const createLollyMutation = gql`
 `
 
 export default function CreateNew() {
+  const classes = useStyles();
   const [colorTop, setcolorTop] = useState("#d52368")
   const [colorBot, setcolorBot] = useState("#deaa10")
   const [colorMid, setcolorMid] = useState("#e95946")
@@ -83,25 +109,31 @@ export default function CreateNew() {
    
    
   return (
-    <div>
+    <Grid container >
+
+      <Grid item xs={12} className={classes.header}>
       <Header
-        mainHeadingText="Kuch Meetha Hojaye?"
-        secondaryHeadingText="Add Some Toppings, Add Some Love..."
+        mainHeadingText="VirtualLolly"
+        secondaryHeadingText="because we all know someone who deserves some sugar"
       />
+      </Grid>
     
-      <div className="editorRoot">
-        <div className="LollyCreaterColorContainer">
+      <Grid item xs={12} className={classes.editorRoot}>
+        <Grid className={classes.LollyCreaterColorContainer}>
           <Lolly
             style="lollipopEditor"
             lollyTop={colorTop}
             lollyBot={colorBot}
             lollyMid={colorMid}
           />
+          </Grid>
 
-          <div className="colorSelectorContainer">
+          <Grid className={classes.colorSelectorContainer}>
+            
+            <Grid >
             <label htmlFor="topFlavor" className="colorPickerLabel">
               <input
-                className="colorPicker"
+                className={classes.colorPickerLabel}
                 value={colorTop}
                 type="color"
                 name="topFlavor"
@@ -111,10 +143,12 @@ export default function CreateNew() {
                 }}
               ></input>
             </label>
-
-            <label htmlFor="midFlavor" className="colorPickerLabel">
+            </Grid>
+            
+            <Grid >
+            <label  htmlFor="midFlavor" >
               <input
-                className="colorPicker"
+                className={classes.colorPickerLabel}
                 value={colorMid}
                 type="color"
                 name="midFlavor"
@@ -124,10 +158,12 @@ export default function CreateNew() {
                 }}
               ></input>
             </label>
-
+            </Grid>
+            
+            <Grid >
             <label htmlFor="botFlavor" className="colorPickerLabel">
               <input
-                className="colorPicker"
+                className={classes.colorPickerLabel}
                 value={colorBot}
                 type="color"
                 name="botFlavor"
@@ -137,19 +173,25 @@ export default function CreateNew() {
                 }}
               ></input>
             </label>
-          </div>
-        </div>
-
+            </Grid>
+            
+         
+        </Grid>
+        
+        <Grid>
         <form className="formContainer" onSubmit={formik.handleSubmit}>
+            
+           <Grid>
+           <Grid item className={classes.formlabel}>
           <label className="formLabel" htmlFor="sendName">
             To:
           </label>
-          <div className="formErrors">
+           <div className="formErrors">
             {formik.errors.recName && formik.touched.recName
               ? formik.errors.recName
               : null}
           </div>
-          <input
+         <input
             className="inputText"
             type="text"
             name="recName"
@@ -157,10 +199,13 @@ export default function CreateNew() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
+           </Grid>
 
+           <Grid item className={classes.formlabel}>
           <label className="formLabel" htmlFor="msg">
             Message:{" "}
           </label>
+
           <div className="formErrors">
             {formik.errors.message && formik.touched.message
               ? formik.errors.message
@@ -175,7 +220,9 @@ export default function CreateNew() {
             cols={30}
             rows={15}
           />
+          </Grid>
 
+          <Grid item className={classes.formlabel}>
           <label className="formLabel" htmlFor="Recname">
             {" "}
             From:{" "}
@@ -193,12 +240,20 @@ export default function CreateNew() {
             name="sendersName"
             id="sendersName"
           />
+          </Grid>
 
-          <button className="submitButton" type="submit">
+          <Grid item className={classes.formlabel}>
+          <Button className="submitButton" type="submit">
             Send
-          </button>
+          </Button>
+          </Grid>
+          </Grid> 
         </form>
-      </div>
-    </div>
+      
+        </Grid>
+
+
+      </Grid>
+    </Grid>
   )
 }
